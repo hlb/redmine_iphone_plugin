@@ -1,10 +1,10 @@
 <div id="my-issues">
     <div class="toolbar">
-        <h1>My Issues</h1>
+        <h1><%=l(:label_assigned_to_me_issues)%></h1>
         <a href="#" class="back">Back</a>
     </div>
     <ul class="edgetoedge">
-        <% if @assigned_issues && @assigned_issues.any? %>
+        <% if @assigned_issues.any? %>
             <% for issue in @assigned_issues %>
             <li>
                 <%= link_to "#{h(truncate(issue.subject, :length => 60))} <p>#{h(issue.project)}, #{h(issue.id)}, #{h(issue.tracker)} (#{h(issue.status)})</p>", :controller => 'issues', :action => 'show', :id => issue %>
@@ -36,7 +36,7 @@
         <h1><%=h html_title %></h1>
     </div>
     <ul class="rounded">
-        <li class="arrow"><a href="#my-issues"><%= image_tag "mini-icons/star.png", :plugin => :redmine_iphone %> My Issues</a> <small class="counter">20</small></li>
-        <li class="arrow"><a href="#projects"><%= image_tag "mini-icons/gear.png", :plugin => :redmine_iphone %> <%=l(:label_project_latest)%></a> <small class="counter">8</small></li>
+        <li class="arrow"><a href="#my-issues"><%=l(:label_assigned_to_me_issues)%></a> <small class="counter"><%= Issue.visible.open.count(:conditions => {:assigned_to_id => User.current.id})%></small></li>
+        <li class="arrow"><a href="#projects"><%=l(:label_project_latest)%></a></li>
     </ul>
 </div>
