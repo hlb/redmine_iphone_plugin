@@ -1,0 +1,42 @@
+<div id="my-issues">
+    <div class="toolbar">
+        <h1>My Issues</h1>
+        <a href="#" class="back">Back</a>
+    </div>
+    <ul class="edgetoedge">
+        <% if @assigned_issues && @assigned_issues.any? %>
+            <% for issue in @assigned_issues %>
+            <li>
+                <%= link_to "#{h(truncate(issue.subject, :length => 60))} <p>#{h(issue.project)}, #{h(issue.id)}, #{h(issue.tracker)} (#{h(issue.status)})</p>", :controller => 'issues', :action => 'show', :id => issue %>
+            </li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+
+<div id="projects">
+    <div class="toolbar">
+        <h1><%=l(:label_project_latest)%></h1>
+        <a href="#" class="back">Back</a>
+    </div>
+    <ul class="edgetoedge">
+        <li class="sep"><%=l(:label_project_latest)%></li>
+        <% if @projects.any? %>
+            <% for project in @projects %>
+            <li class="arrow">
+                <%= link_to "#{h(project.name)} #{textilizable(project.short_description, :project => project)}", :controller => 'projects', :action => 'show', :id => project %>
+            </li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+
+<div id="home" class="current">
+    <div class="toolbar">
+        <h1><%=h html_title %></h1>
+    </div>
+    <ul class="rounded">
+        <li class="arrow"><a href="#my-issues"><%= image_tag "mini-icons/star.png", :plugin => :redmine_iphone %> My Issues</a> <small class="counter">20</small></li>
+        <li class="arrow"><a href="#projects"><%= image_tag "mini-icons/gear.png", :plugin => :redmine_iphone %> <%=l(:label_project_latest)%></a> <small class="counter">8</small></li>
+    </ul>
+</div>

@@ -3,10 +3,12 @@ iPhone plugin for Redmine
 
 An iPhone interface plugin for Redmine.
 
+Created by Handlino Inc. <http://handlino.com/>
+
 Requirement
 -----------------------------
 
-none
+N/A
 
 Installation
 -----------------------------
