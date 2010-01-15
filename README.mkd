@@ -13,7 +13,7 @@ N/A
 Installation
 -----------------------------
 
-* cd to your redmine vendor/plugins dir.
-* git-clone the plugin from this repo into a folder in there
-* restart your Redmine web servers 
-* open your iPhone to your http://redmine.server/iphone
+* cd to your redmine vendor/plugins dir
+* git clone the plugin
+* restart your Redmine web server
+* view http://redmine.server/iphone on iPhone
