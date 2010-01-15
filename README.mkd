@@ -1,0 +1,17 @@
+iPhone plugin for Redmine
+=============================
+
+An iPhone interface plugin for Redmine.
+
+Requirement
+-----------------------------
+
+none
+
+Installation
+-----------------------------
+
+* cd to your redmine vendor/plugins dir.
+* git-clone the plugin from this repo into a folder in there
+* restart your Redmine web servers 
+* open your iPhone to your http://redmine.server/iphone
