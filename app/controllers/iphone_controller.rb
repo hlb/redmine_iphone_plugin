@@ -4,7 +4,7 @@ class IphoneController < ApplicationController
   layout "iphone"
 
   def index
-    @projects = Project.latest User.current
+    @projects = Project.all User.current
     @assigned_issues = Issue.visible.open.find(:all,
                                     :conditions => {:assigned_to_id => User.current.id},
                                     :include => [ :status, :project, :tracker, :priority ],

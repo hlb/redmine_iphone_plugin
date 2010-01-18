@@ -32,9 +32,9 @@
     </ul>
 </div>
 
-<div id="projects">
+<div id="my-projects">
     <div class="toolbar">
-        <h1><%=l(:label_project_latest)%></h1>
+        <h1><%=l(:label_my_projects)%></h1>
         <a href="#" class="back">Back</a>
     </div>
     <ul class="edgetoedge">
@@ -59,6 +59,6 @@
         <% if User.current.logged? %>
         <li class="arrow"><a href="#my-issues"><%=l(:label_assigned_to_me_issues)%></a> <small class="counter"><%= Issue.visible.open.count(:conditions => {:assigned_to_id => User.current.id})%></small></li>
         <% end %>
-        <li class="arrow"><a href="#projects"><%=l(:label_project_latest)%></a></li>
+        <li class="arrow"><a href="#my-projects"><%=l(:label_my_projects)%></a></li>
     </ul>
 </div>
