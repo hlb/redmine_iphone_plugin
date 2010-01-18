@@ -6,7 +6,10 @@
         <% end %>
         <a href="#" class="back">Back</a>
     </div>
+    
     <div class="info">
+        Created By: <%=h @issue.author.name %>
+        Status: <%= @issue.status.name %>
         <p><%=h @issue.description %></p>
     </div>
 

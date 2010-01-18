@@ -2,3 +2,6 @@
     font-size: 14px;
     color: #ccc;
 }
+#jqt ul li small {
+    margin-top: -22px;
+}
