@@ -1,0 +1,22 @@
+<div id="<%= dom_id(@issue) %>">
+    <div class="toolbar">
+        <h1><%=h @issue.subject %></h1>
+        <% if !User.current.logged? %>
+        <a class="button slideup" id="infoButton" href="#login">Login</a>
+        <% end %>
+        <a href="#" class="back">Back</a>
+    </div>
+    <div class="info">
+        <p><%=h @issue.description %></p>
+    </div>
+
+    <ul class="individual">
+        <li><%= link_to "Done", "#" %></li>
+        <li><%= link_to "Cancel", "#" %></li>
+    </ul>
+    <ul class="individual">
+        <li><%= link_to "Update", "#" %></li>
+        <li><%= link_to "Comment", "#" %></li>
+    </ul>
+</div>
+

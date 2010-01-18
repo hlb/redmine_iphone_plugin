@@ -1,0 +1,15 @@
+<div id="issues">
+    <div class="toolbar">
+        <h1><%=h @project.name %></h1>
+        <% if !User.current.logged? %>
+        <a class="button slideup" id="infoButton" href="#login">Login</a>
+        <% end %>
+        <a href="#" class="back">Back</a>
+    </div>
+    <h2>Issues &gt; </h2>
+    <ul class="rounded">
+        <% @issues.each do |issue| %>
+        <li><%= link_to issue.subject, :action => "show", :id => issue.id %></li>
+        <% end %>
+    </ul>
+</div>

@@ -9,7 +9,7 @@
     <h2>Issues</h2>
     <ul class="rounded">
         <% @project.trackers.each do |tracker| %>
-        <li><%= tracker.name %> (<%= tracker.issues.size %>)</li>
+        <li><%= link_to tracker.name, :controller => "iphone/issues", :action => "index", :project_id => @project, :tracker_id => tracker %> <small class="counter"><%= tracker.issues.size %></small></li>
         <% end %>
     </ul>
 </div>
