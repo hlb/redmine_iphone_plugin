@@ -5,3 +5,37 @@
 #jqt ul li small {
     margin-top: -22px;
 }
+
+.details {
+    padding: 10px;
+    background: #fff;
+    color: #414141;
+    line-height: 1.2;
+}
+
+.details h3 {
+    font-size: 18px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.details p {
+    margin: 1em 0;
+}
+
+#jqt .journal ul {
+    border: none;
+}
+
+#jqt .journal ul li {
+    background: none;
+    color: #666;
+    font-size: 13px;
+    border: none;
+    padding: 0;
+}
+
+#jqt .journal ul li a {
+    display: inline;
+    color: #369;
+}

@@ -1,16 +1,46 @@
 <div id="<%= dom_id(@issue) %>">
     <div class="toolbar">
-        <h1><%=h @issue.subject %></h1>
+        <h1>#<%= @issue.id %> <%= h(@issue.tracker) %>(<%= @issue.status.name %>)</h1>
         <% if !User.current.logged? %>
         <a class="button slideup" id="infoButton" href="#login">Login</a>
         <% end %>
         <a href="#" class="back">Back</a>
     </div>
-    
+
     <div class="info">
-        Created By: <%=h @issue.author.name %>
-        Status: <%= @issue.status.name %>
-        <p><%=h @issue.description %></p>
+        <p class="author">
+        <%= authoring @issue.created_on, @issue.author %>.
+        </p>
+
+        <p>
+        <% if @issue.created_on != @issue.updated_on %>
+        <%= l(:label_updated_time, time_tag(@issue.updated_on)) %>.
+        <% end %>
+        <%=l(:field_status)%>: <%= @issue.status.name %>
+        </p>
+    </div>
+
+    <div class="<%= @issue.css_classes %> details">
+        <h3 id="issue-subject"><%=h @issue.subject %></h3>
+        <p><strong><%=l(:field_description)%></strong></p>
+        <div class="wiki">
+        <%= textilizable @issue, :description, :attachments => @issue.attachments %>
+        </div>
+
+        <% if authorize_for('issue_relations', 'new') || @issue.relations.any? %>
+        <hr />
+        <div id="relations">
+        <%= render :partial => 'relations' %>
+        </div>
+        <% end %>
+
+        <% if @journals.any? %>
+        <div id="history">
+        <h3><%=l(:label_history)%></h3>
+        <%= render :partial => 'history', :locals => { :journals => @journals } %>
+        </div>
+        <% end %>
+
     </div>
 
     <ul class="individual">

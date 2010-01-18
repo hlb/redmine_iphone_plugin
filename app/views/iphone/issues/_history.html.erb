@@ -1,0 +1,11 @@
+<% for journal in journals %>
+  <div id="change-<%= journal.id %>" class="journal">
+    <h4><%= authoring journal.created_on, journal.user, :label => :label_updated_time_by %></h4>
+    <ul>
+    <% for detail in journal.details %>
+       <li><%= show_detail(detail) %></li>
+    <% end %>
+    </ul>
+    <%= render_notes(journal) unless journal.notes.blank? %>
+  </div>
+<% end %>
