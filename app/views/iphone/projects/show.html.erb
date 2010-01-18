@@ -1,0 +1,16 @@
+<div id="<%= dom_id(@project) %>">
+    <div class="toolbar">
+        <h1><%=h @project.name %></h1>
+        <% if !User.current.logged? %>
+        <a class="button slideup" id="infoButton" href="#login">Login</a>
+        <% end %>
+        <a href="#" class="back">Back</a>
+    </div>
+    <h2>Issues</h2>
+    <ul class="rounded">
+        <% @project.trackers.each do |tracker| %>
+        <li><%= tracker.name %> (<%= tracker.issues.size %>)</li>
+        <% end %>
+    </ul>
+</div>
+

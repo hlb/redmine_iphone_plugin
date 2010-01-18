@@ -46,5 +46,4 @@ class IphoneController < ApplicationController
       successful_authentication(user)
     end
   end
-
 end
