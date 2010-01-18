@@ -6,7 +6,7 @@
         <% end %>
         <a href="#" class="back">Back</a>
     </div>
-    <h2>Issues &gt; </h2>
+    <h2>Issues &gt; <%= @tracker.name %></h2>
     <ul class="edgetoedge">
         <% @issues.each do |issue| %>
         <li class="arrow"><%= link_to issue.subject, :action => "show", :id => issue.id %> <small><%= issue.tracker.name %></small></li>

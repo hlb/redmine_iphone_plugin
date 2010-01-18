@@ -8,6 +8,7 @@ class Iphone::IssuesController < ApplicationController
   helper :journals
 
   def index
+    @tracker = Tracker.find(params[:tracker_id])
     @issues = @project.issues.all(:conditions => [ "tracker_id = ?", params[:tracker_id] ])
   end
 
