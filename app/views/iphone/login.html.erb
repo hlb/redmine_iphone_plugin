@@ -1,0 +1,19 @@
+<div id="login" class="current">
+    <% form_tag({:controller => "/iphone", :action=> "login"}) do %>
+    <div class="toolbar">
+        <h1>Login</h1>
+        <a href="/iphone" class="back">Back</a>
+    </div>
+    <ul class="edgetoedge">
+        <li><%= text_field_tag 'username', nil, :placeholder => l(:field_login) %></li>
+        <li><%= password_field_tag 'password', nil, :placeholder => l(:field_password) %></li>
+        <% if Setting.openid? %>
+        <li><%= text_field_tag "openid_url", nil, :placeholder => l(:field_identity_url) %></li>
+        <% end %>
+        <% if Setting.autologin? %>
+        <li><%= check_box_tag 'autologin', 1, false, :title => l(:label_stay_logged_in) %></li>
+        <% end %>
+    </ul>
+    <div><input type="submit" class="submit" value="<%= l(:button_login) %>"></div>
+    <% end %>
+</div>

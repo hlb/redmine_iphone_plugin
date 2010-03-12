@@ -1,43 +1,18 @@
-<% form_tag({:controller => "iphone", :action=> "login"}, :id => "login") do %>
+<div id="home" class="current">
     <div class="toolbar">
-        <h1>Login</h1>
-        <a href="#" class="back">Back</a>
+        <h1 class="title"><%=h html_title %></h1>
+        <% if !User.current.logged? %>
+        <a class="button slideup" id="infoButton" href="/iphone/login">Login</a>
+        <% end %>
     </div>
+
+    <% if User.current.logged? %>
+    <h2>My Projects</h2>
+    <% else %>
+    <h2>Projects</h2>
+    <% end %>
+
     <ul class="rounded">
-        <li><%= text_field_tag 'username', nil, :placeholder => l(:field_login) %></li>
-        <li><%= password_field_tag 'password', nil, :placeholder => l(:field_password) %></li>
-        <% if Setting.openid? %>
-        <li><%= text_field_tag "openid_url", nil, :placeholder => l(:field_identity_url) %></li>
-        <% end %>
-        <% if Setting.autologin? %>
-        <li><%= check_box_tag 'autologin', 1, false, :title => l(:label_stay_logged_in) %></li>
-        <% end %>
-    </ul>
-    <a style="margin:0 10px;color:rgba(0,0,0,.9)" href="#" class="submit whiteButton"><%=l(:button_login)%> &#187;</a>
-<% end %>
-
-<div id="my-issues">
-    <div class="toolbar">
-        <h1><%=l(:label_assigned_to_me_issues)%></h1>
-        <a href="#" class="back">Back</a>
-    </div>
-    <ul class="edgetoedge">
-        <% if @assigned_issues.any? %>
-            <% for issue in @assigned_issues %>
-            <li>
-                <%= link_to "#{h(truncate(issue.subject, :length => 60))} <p>#{h(issue.project)}, ##{h(issue.id)}, #{h(issue.tracker)}(#{h(issue.status)})</p>", :controller => 'iphone/issues', :action => 'show', :id => issue %>
-            </li>
-            <% end %>
-        <% end %>
-    </ul>
-</div>
-
-<div id="my-projects">
-    <div class="toolbar">
-        <h1><%=l(:label_my_projects)%></h1>
-        <a href="#" class="back">Back</a>
-    </div>
-    <ul class="edgetoedge">
         <% if @projects.any? %>
             <% for project in @projects %>
             <li class="arrow">
@@ -46,19 +21,5 @@
             <% end %>
         <% end %>
     </ul>
-</div>
 
-<div id="home" class="current">
-    <div class="toolbar">
-        <h1><%=h html_title %></h1>
-        <% if !User.current.logged? %>
-        <a class="button slideup" id="infoButton" href="#login">Login</a>
-        <% end %>
-    </div>
-    <ul class="rounded">
-        <% if User.current.logged? %>
-        <li class="arrow"><a href="#my-issues"><%=l(:label_assigned_to_me_issues)%></a> <small class="counter"><%= Issue.visible.open.count(:conditions => {:assigned_to_id => User.current.id})%></small></li>
-        <% end %>
-        <li class="arrow"><a href="#my-projects"><%=l(:label_my_projects)%></a></li>
-    </ul>
 </div>

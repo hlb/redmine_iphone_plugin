@@ -1,10 +1,10 @@
-<div id="timelog-details">
+<div id="timelog-details" class="current">
     <div class="toolbar">
-        <h1>Time <%=h @project.name %></h1>
+        <h1>Time | <%=h @project.name %></h1>
         <% if !User.current.logged? %>
         <a class="button slideup" id="infoButton" href="#login">Login</a>
         <% end %>
-        <a href="#" class="back">Back</a>        
+        <a href="/iphone/projects/show/<%= @time_entry.project %>" class="back">Back</a>
     </div>
     <% form_for :time_entry, @time_entry, :url => {:action => 'create', :id => @time_entry, :project_id => @time_entry.project} do |f| %>
     <ul class="edgetoedge">

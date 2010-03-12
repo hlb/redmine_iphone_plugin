@@ -1,13 +1,21 @@
-<div id="issues">
+<div id="issues" class="current">
     <div class="toolbar">
         <h1><%=h @project.name %></h1>
         <% if !User.current.logged? %>
         <a class="button slideup" id="infoButton" href="#login">Login</a>
         <% end %>
-        <a href="#" class="back">Back</a>
+        <% if @project %>
+        <%= link_to "Back", { :controller => "projects", :action => "show", :id => @project }, :class => "back" %>
+        <% else %>
+        <%= link_to "Back", "/iphone", :class => "back" %>
+        <% end %>
     </div>
+    <% if @tracker %>
     <h2>Issues &gt; <%= @tracker.name %></h2>
-    <ul class="edgetoedge">
+    <% else %>
+    <h2>Issues</h2>
+    <% end %>
+    <ul class="rounded">
         <% @issues.each do |issue| %>
         <li class="arrow"><%= link_to issue.subject, :action => "show", :id => issue.id %></li>
         <% end %>

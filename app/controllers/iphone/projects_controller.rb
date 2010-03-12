@@ -1,10 +1,14 @@
 class Iphone::ProjectsController < ApplicationController
   unloadable
-  layout "iphone_blank"
+  layout "iphone"
 
   before_filter :find_project
 
-  def show    
+  def show
+    cond = @project.project_condition(Setting.display_subprojects_issues?)
+    TimeEntry.visible_by(User.current) do
+      @total_hours = TimeEntry.sum(:hours, :include => :project, :conditions => cond).to_f
+    end
   end
 
 private

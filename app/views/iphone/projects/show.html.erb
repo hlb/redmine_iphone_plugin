@@ -1,10 +1,10 @@
-<div id="<%= dom_id(@project) %>">
+<div id="<%= dom_id(@project) %>" class="current">
     <div class="toolbar">
         <h1><%=h @project.name %></h1>
         <% if !User.current.logged? %>
         <a class="button slideup" id="infoButton" href="#login">Login</a>
         <% end %>
-        <a href="#" class="back">Back</a>
+        <%= link_to "Back", "/iphone", :class => "back" %>
     </div>
     <h2>Issues</h2>
     <ul class="rounded">
@@ -12,4 +12,19 @@
         <li class="arrow"><%= link_to tracker.name, :controller => "iphone/issues", :action => "index", :project_id => @project, :tracker_id => tracker %> <small class="counter"><%= Issue.count(:conditions => {:tracker_id => tracker.id, :project_id => @project.id}) %></small></li>
         <% end %>
     </ul>
+
+    <% if @total_hours && User.current.allowed_to?(:view_time_entries, @project) %>
+    <h2><%= l(:label_spent_time) %></h2>
+    <ul class="rounded">
+        <li>
+            <span class="icon icon-time"><%= l_hours(@total_hours) %></span>
+        </li>
+        <li class="arrow">
+            <%= link_to(l(:label_details), {:controller => 'timelog', :action => 'details', :project_id => @project.id}) %>
+        </li>
+        <li class="arrow">
+            <%= link_to(l(:label_report), {:controller => 'timelog', :action => 'report', :project_id => @project.id}) %>
+        </li>
+    </ul>
+    <% end %>
 </div>

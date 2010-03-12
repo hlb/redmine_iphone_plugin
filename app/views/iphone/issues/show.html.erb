@@ -1,10 +1,14 @@
-<div id="<%= dom_id(@issue) %>">
+<div id="<%= dom_id(@issue) %>" class="current">
     <div class="toolbar">
         <h1>#<%= @issue.id %> <%= h(@issue.tracker) %>(<%= @issue.status.name %>)</h1>
         <% if !User.current.logged? %>
         <a class="button slideup" id="infoButton" href="#login">Login</a>
         <% end %>
-        <a href="#" class="back">Back</a>
+        <% if @project %>
+        <%= link_to "Back", { :controller => "issues", :action => "index", :project_id => @project }, :class => "back" %>
+        <% else %>
+        <%= link_to "Back", "/iphone", :class => "back" %>
+        <% end %>
     </div>
 
     <div class="info">

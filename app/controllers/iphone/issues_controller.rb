@@ -1,6 +1,6 @@
 class Iphone::IssuesController < ApplicationController
   unloadable
-  layout "iphone_blank"
+  layout "iphone"
 
   before_filter :find_issue, :only => [:show]
   before_filter :find_project
@@ -8,8 +8,17 @@ class Iphone::IssuesController < ApplicationController
   helper :journals
 
   def index
-    @tracker = Tracker.find(params[:tracker_id])
-    @issues = @project.issues.all(:conditions => [ "tracker_id = ?", params[:tracker_id] ])
+    if params[:tracker_id]
+      @tracker = Tracker.find(params[:tracker_id])
+      @issues = @project.issues.all(:conditions => [ "tracker_id = ?", params[:tracker_id] ])
+    else
+      @issues = @project.issues
+    end
+
+    @assigned_issues = Issue.visible.open.find(:all,
+                                    :conditions => {:assigned_to_id => User.current.id},
+                                    :include => [ :status, :project, :tracker, :priority ],
+                                    :order => "#{IssuePriority.table_name}.position DESC, #{Issue.table_name}.updated_on DESC")
   end
 
   def show
