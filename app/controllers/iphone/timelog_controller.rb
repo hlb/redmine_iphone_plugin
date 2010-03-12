@@ -37,6 +37,6 @@ class Iphone::TimelogController < ApplicationController
       flash[:notice] = l(:notice_successful_update)
     end
 
-    render :controller => "projects", :action => 'show', :id => @time_entry.project
+    redirect_to :controller => "projects", :action => 'show', :id => @time_entry.project
   end
 end
