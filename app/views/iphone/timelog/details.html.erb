@@ -1,22 +1,19 @@
 <div id="timelog-details" class="current">
     <div class="toolbar">
-        <h1>Time | <%=h @project.name %></h1>
-        <% if !User.current.logged? %>
-        <a class="button slideup" id="infoButton" href="#login">Login</a>
-        <% end %>
-        <a href="/iphone/projects/show/<%= @time_entry.project %>" class="back">Back</a>
+        <h1>Time log Details | <%=h @project.name %></h1>
+        <a href="/iphone/projects/show/<%= @project.id %>" class="back">Back</a>
     </div>
-    <% form_for :time_entry, @time_entry, :url => {:action => 'create', :id => @time_entry, :project_id => @time_entry.project} do |f| %>
+
     <ul class="edgetoedge">
-        <li><%= f.text_field :issue_id, :size => 6, :placeholder => "Issue #" %> <em><%= h("#{@time_entry.issue.tracker.name} ##{@time_entry.issue.id}: #{@time_entry.issue.subject}") if @time_entry.issue %></em></li>
-        <li><%= f.text_field :spent_on, :size => 10, :required => true %></li>
-        <li><%= f.text_field :hours, :size => 6, :required => true, :placeholder => "Hours" %></li>
-        <li><%= f.text_field :comments, :size => 100, :placeholder => "Comments" %></li>
-        <li><%= f.select :activity_id, activity_collection_for_select_options(@time_entry), :required => true %></li>
-        <%= call_hook(:view_timelog_edit_form_bottom, { :time_entry => @time_entry, :form => f }) %>
+        <% @entries.each do |entry| %>
         <li>
-            <%= submit_tag l(:button_save) %>
+            <p><%=h entry.user %>, <%= html_hours("%.2f" % entry.hours) %> Hours</p>
+            <p><%=h entry.activity %></p>
+            <% if entry.issue %>
+            <p>#<%= entry.issue.id %></p>
+            <% end %>
+            <p><%=h entry.comments %></p>
         </li>
+        <% end %>
     </ul>
-    <% end %>
 </div>

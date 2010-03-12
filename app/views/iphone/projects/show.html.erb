@@ -16,8 +16,9 @@
     <% if @total_hours && User.current.allowed_to?(:view_time_entries, @project) %>
     <h2><%= l(:label_spent_time) %></h2>
     <ul class="rounded">
-        <li>
-            <span class="icon icon-time"><%= l_hours(@total_hours) %></span>
+        <li><%= l_hours(@total_hours) %><br></li>
+        <li class="arrow">
+            <%= link_to(l(:label_new), {:controller => 'timelog', :action => 'new', :project_id => @project.id}) %>
         </li>
         <li class="arrow">
             <%= link_to(l(:label_details), {:controller => 'timelog', :action => 'details', :project_id => @project.id}) %>
