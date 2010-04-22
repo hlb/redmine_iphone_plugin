@@ -7,12 +7,12 @@
     <ul class="edgetoedge">
         <% @entries.each do |entry| %>
         <li>
-            <p><%=h entry.user %>, <%= html_hours("%.2f" % entry.hours) %> Hours</p>
-            <p><%=h entry.activity %></p>
             <% if entry.issue %>
-            <p>#<%= entry.issue.id %></p>
+            <p><%= link_to "#" + entry.issue.id, :controller => "issues", :action => "show", :id => entry.issue.id %></p>
             <% end %>
-            <p><%=h entry.comments %></p>
+            <p><%=h entry.activity %>, <%= html_hours("%.1f" % entry.hours) %> Hours</p>
+            <span class="user"><%=h entry.user %></span>
+            <span class="comment"><%=h entry.comments %></span>
         </li>
         <% end %>
     </ul>

@@ -1,6 +1,6 @@
 #jqt ul li a p {
     font-size: 14px;
-    color: #ccc;
+    color: #ddd;
 }
 #jqt ul li small {
     margin-top: -22px;
@@ -9,7 +9,7 @@
 .details {
     padding: 10px;
     background: #fff;
-    color: #414141;
+    color: #111;
     line-height: 1.2;
 }
 
@@ -38,4 +38,9 @@
 #jqt .journal ul li a {
     display: inline;
     color: #369;
+}
+
+#timelog-details .user,
+#timelog-details .comment {
+    font-size: 14px;
 }
