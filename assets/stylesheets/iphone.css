@@ -6,6 +6,7 @@
     margin-top: -22px;
 }
 
+/* issue */
 .details {
     padding: 10px;
     background: #fff;
@@ -21,6 +22,15 @@
 
 .details p {
     margin: 1em 0;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.details th, .details td {
+    text-align: left;
+    border-bottom: 1px solid #ccc;
 }
 
 #jqt .journal ul {
@@ -40,6 +50,11 @@
     color: #369;
 }
 
+#history .contextual {
+    display: none;
+}
+
+/* timelog */
 #timelog-details .user,
 #timelog-details .comment {
     font-size: 14px;

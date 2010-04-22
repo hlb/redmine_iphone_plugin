@@ -6,7 +6,7 @@ body > *, div#jqt > * {
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#333), to(#5e5e65));
 }
 #jqt h1, #jqt h2 {
-    font: bold 18px Helvetica;
+    font: bold 18px "Helvetica Neue", Helvetica;
     text-shadow: rgba(255,255,255,.2) 0 1px 1px;
     color: #000;
     margin: 10px 20px 5px;
@@ -139,7 +139,7 @@ div#jqt.landscape .toolbar > h1 {
 #jqt ul {
     color: #aaa;
     border: 1px solid #333333;
-    font: bold 18px Helvetica;
+    font: bold 18px "Helvetica Neue", Helvetica;
     padding: 0;
     margin: 15px 10px 17px 10px;
 }
@@ -240,7 +240,7 @@ div#jqt.landscape .toolbar > h1 {
 }
 #jqt ul li a + a {
     color: #000;
-    font: 14px Helvetica;
+    font: 14px "Helvetica Neue", Helvetica;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -250,7 +250,7 @@ div#jqt.landscape .toolbar > h1 {
 }
 #jqt ul li a + a + a, #jqt ul li.img a + a + a + a, #jqt ul li.img a + small + a + a + a {
     color: #666;
-    font: 13px Helvetica;
+    font: 13px "Helvetica Neue", Helvetica;
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -280,9 +280,9 @@ div#jqt.landscape .toolbar > h1 {
 #jqt ul li textarea,
 #jqt ul li select {
     color: #777;
-    background: transparent url(../.png);
+    background: transparent url('data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==');
     border: 0;
-    font: normal 17px Helvetica;
+    font: normal 17px "Helvetica Neue", Helvetica;
     padding: 0;
     display: inline-block;
     margin-left: 0px;
@@ -307,7 +307,7 @@ div#jqt.landscape .toolbar > h1 {
 }
 #jqt ul li input[type="checkbox"]:after, #jqt ul li input[type="radio"]:after {
     content: attr(title);
-    font: 17px Helvetica;
+    font: 17px "Helvetica Neue", Helvetica;
     display: block;
     width: 246px;
     color: #777;
@@ -317,7 +317,7 @@ div#jqt.landscape .toolbar > h1 {
 /* @group Mini Label */
 #jqt ul li small {
     color: #64c114;
-    font: 17px Helvetica;
+    font: 17px "Helvetica Neue", Helvetica;
     text-align: right;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -458,7 +458,7 @@ div#jqt.landscape .toolbar > h1 {
 #jqt ul.plastic {
     background: #17181a;
     color: #aaa;
-    font: bold 18px Helvetica;
+    font: bold 18px "Helvetica Neue", Helvetica;
     margin: 0;
     padding: 0;
     border-width: 0 0 1px 0;
