@@ -1,7 +1,11 @@
 <div id="timelog-details" class="current">
     <div class="toolbar">
         <h1>New Time Log | <%=h @project.name %></h1>
-        <a href="/iphone/projects/show/<%= @time_entry.project %>" class="back">Back</a>
+        <% if @project %>
+        <%= link_to "Back", { :controller => "projects", :action => "show", :id => @project }, :class => "back" %>
+        <% else %>
+        <%= link_to "Back", "/iphone", :class => "back" %>
+        <% end %>
     </div>
     <% form_for :time_entry, @time_entry, :url => {:action => 'create', :id => @time_entry, :project_id => @time_entry.project} do |f| %>
     <ul class="edgetoedge">
