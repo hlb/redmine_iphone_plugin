@@ -8,7 +8,7 @@
         <% @entries.each do |entry| %>
         <li>
             <% if entry.issue %>
-            <p><%= link_to "#" + entry.issue.id, :controller => "issues", :action => "show", :id => entry.issue.id %></p>
+            <p><%= link_to "##{entry.issue.id}", :controller => "issues", :action => "show", :id => entry.issue.id %></p>
             <% end %>
             <p><%=h entry.activity %>, <%= html_hours("%.1f" % entry.hours) %> Hours</p>
             <span class="user"><%=h entry.user %></span>
